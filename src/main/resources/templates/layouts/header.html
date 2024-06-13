@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facultad Nacional de Jujuy</title>
+<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+<link rel="stylesheet" href="/css/styles.css"/>
+</head>
+<body>
+	
+
+<div class="header-container" >
+        <header data-th-fragment="header">
+            <nav class="navbar bg-dark border-bottom border-body header-navbar" data-bs-theme="dark">
+                <div class="container-fluid">
+                    <a href="/principal/index" class="navbar-brand">
+                        <img alt="imagen de la facultad" src="/imagenes/logo.png" class="img-fluid custom-img-size link-image">
+                    </a>
+                    <div class="navbar-title-container">
+                        <h1 style="color: white;" class="nombre">FACULTAD NACIONAL DE JUJUY</h1>
+                        <h4 style="color: white;" class="eslogan">"La educación es lo que sobrevive cuando lo aprendido ha sido olvidado"</h4>
+                    </div>
+                    <form class="d-flex" role="search" action="">
+                        <input class="form-control me-2" type="search" placeholder="¿Qué busca?" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    </form>
+                </div>
+            </nav>
+        </header>
+</div>
+
+<div class="navbar-container">
+			<nav class="navbar bg-body-tertiary navbar-custom" data-th-fragment="navbar">
+				<div class="container-fluid">
+					<div class="imagenes-container">
+						<a class="navbar-brand" href="https://www.instagram.com">
+							<img alt="imagenDeInstagram" src="/imagenes/insta.png" class="img-fluid custom-img-size-insta link-image">
+						</a>
+						<a class="navbar-brand" href="https://www.facebook.com">
+							<img alt="imagenDeFacebook" src="/imagenes/facebook.png" class="img-fluid custom-img-size-face link-image">
+						</a>
+						<a class="navbar-brand" href="https://www.youtube.com">
+							<img alt="imagenDeYoutube" src="/imagenes/youtube.png" class="img-fluid custom-img-size-youtu link-image">
+						</a>
+					</div>
+					<button class="navbar-toggler" type="button"
+						data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+						aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="offcanvas offcanvas-end" tabindex="-1"
+						id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+						<div class="offcanvas-header">
+							<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu de Navegacion</h5>
+							<button type="button" class="btn-close"
+								data-bs-dismiss="offcanvas" aria-label="Close"></button>
+						</div>
+						<div class="offcanvas-body">
+							<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+								<li class="nav-item"><a class="nav-link active" aria-current="page" href="/principal/index">Inicio</a></li>
+								<li class="nav-item"><a class="nav-link active" href="/acercade">Acerca de</a>
+								</li>							
+								<li class="nav-item"><a class="nav-link active" href="/Noticias">Noticias</a>
+								</li><li class="nav-item"><a class="nav-link active" href="/Contactos">Contactos</a>
+							</li>
+							<li class="nav-item"><a class="nav-link active" href="/AgregarDatos">Agregar o Añadir informacion</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+</div>
+	
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facultad Nacional de Jujuy</title>
+<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+<link rel="stylesheet" href="/css/styles.css"/>
+</head>
+
+<style>
+	* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+</style>
+
+<body>
+
+<header data-th-insert="~{/layouts/header :: header}"></header>
+<nav data-th-insert="~{/layouts/header :: navbar}"></nav>
+
+					<div class="container">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th scope="col">Codigo</th>
+									<th scope="col">Nombre</th>
+									<th scope="col">Cantidad de Años</th>
+									<th scope="col">Estado</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-th-each="carrera : ${listadoCarrera}">
+									<td data-th-text="${carrera.codigo}"></td>
+									<td data-th-text="${carrera.nombre}"></td>
+									<td data-th-text="${carrera.cantAnios}"></td>
+									<td data-th-text="${carrera.estado}"></td>
+									<td><a data-th-href="@{'/quitarCarrera/'+${carrera.codigo}}" class="btn btn-danger">Quitar</a> <a data-th-href="@{'/modificarCarrera/'+${carrera.codigo}}" class="btn btn-warning">Modificar</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+
+
+<footer data-th-insert="~{/layouts/footer :: footer}"></footer>
+
+<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+</body>
+</html>
