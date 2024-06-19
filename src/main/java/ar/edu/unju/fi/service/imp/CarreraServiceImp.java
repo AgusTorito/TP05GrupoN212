@@ -46,13 +46,31 @@ public class CarreraServiceImp implements CarreraService {
 
 	@Override
 	public void modificarCarrera(Carrera carrera) {
-		
+		List<Carrera> lasCarreras = carreraRepository.findAll();
+	
+		for(int i=0; i<lasCarreras.size(); i++)
+		{
+			Carrera carreras = lasCarreras.get(i);
+			if(carreras.getCodigo().equals(carrera.getCodigo())) {
+				lasCarreras.set(i, carrera);
+				break;
+			}
+		}
 		
 	}
 
 	@Override
 	public Carrera buscarCarrera(String codigo) {
 
+		List<Carrera> Carreras = carreraRepository.findAll();
+		
+		for (Carrera c : Carreras)
+		{
+			if(c.getCodigo().equals(codigo))
+			{
+				return c;
+			}
+		}
 		return null;
 	}	
 	
