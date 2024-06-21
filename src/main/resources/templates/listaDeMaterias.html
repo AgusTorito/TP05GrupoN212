@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lista de Materias</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+        .btn {
+            border-radius: 0;
+        }
+        .table thead th {
+            border-bottom: 2px solid #dee2e6;
+        }
+        .table td, .table th {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Lista de Materias</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Curso</th>
+                    <th>Cantidad de Horas</th>
+                    <th>Modalidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="materia : ${listadoMateria}">
+                    <td th:text="${materia.codigo}">Código</td>
+                    <td th:text="${materia.nombre}">Nombre</td>
+                    <td th:text="${materia.curso}">Curso</td>
+                    <td th:text="${materia.cantidadHoras}">Cantidad de Horas</td>
+                    <td th:text="${materia.modalidad}">Modalidad</td>
+                    <td>
+                        <a th:href="@{/modificarMateria/{codigo}(codigo=${materia.codigo})}" class="btn btn-primary">Modificar</a>
+                        <a th:href="@{/quitarMateria/{codigo}(codigo=${materia.codigo})}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/formularioMateria" class="btn btn-success">Agregar Nueva Materia</a>
+    </div>
+</body>
+</html>
+
+
