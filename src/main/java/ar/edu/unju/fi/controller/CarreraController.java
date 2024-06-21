@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.model.Carrera;
+import ar.edu.unju.fi.DTO.CarreraDTO;
 import ar.edu.unju.fi.service.CarreraService;
 
 @Controller
 public class CarreraController {
 	
 	@Autowired
-	 Carrera nuevaCarrera = new Carrera();
+	 CarreraDTO nuevaCarreraDTO;
 	
 	@Autowired
 	CarreraService carreraService;
@@ -24,9 +24,9 @@ public class CarreraController {
 	public ModelAndView getFormCarrera()
 	{
 		 ModelAndView modelView = new ModelAndView("formCarrera");
-		 modelView.addObject("nuevaCarrera", new Carrera());
+		 modelView.addObject("nuevaCarrera", nuevaCarreraDTO);
 		 return modelView;
-	}
+	}	
 	
 	@GetMapping("/ListaCarreras")
     public ModelAndView getlistaCarrera() {
@@ -35,7 +35,7 @@ public class CarreraController {
     }
 
 	@PostMapping("/guardarCarrera")
-	public ModelAndView saveCarrera(@ModelAttribute("nuevaCarrera") Carrera carreraParaGuardar) {
+	public ModelAndView saveCarrera(@ModelAttribute("nuevaCarrera") CarreraDTO carreraParaGuardar) {
 		
 	carreraService.guardarCarrera(carreraParaGuardar);
 	
@@ -59,11 +59,11 @@ public class CarreraController {
 
 	@GetMapping("/modificarCarrera/{codigo}")
 	public ModelAndView getModificarCarrera(@PathVariable(name="codigo") String codigo) {
-		//Carrera carreraParaModificar = ListadoCarreras.buscarCarreraPorCodigo(codigo);
-		Carrera carreraParaModificar = carreraService.buscarCarrera(codigo);
+	
+		CarreraDTO carreraDTOParaModificar = carreraService.buscarCarrera(codigo);
 
 		ModelAndView modelView = new ModelAndView("formCarrera");
-		modelView.addObject("nuevaCarrera", carreraParaModificar);
+		modelView.addObject("nuevaCarrera", carreraDTOParaModificar);
 
 		return modelView;
 	}
@@ -71,8 +71,8 @@ public class CarreraController {
 
 
 	@PostMapping("/modificarCarrera")
-	public ModelAndView updateCarrera(@ModelAttribute("nuevaCarrera") Carrera carreraModificada) {
-		carreraService.modificarCarrera(carreraModificada);
+	public ModelAndView updateCarrera(@ModelAttribute("nuevaCarrera") CarreraDTO carreraDTOModificada) {
+		carreraService.modificarCarrera(carreraDTOModificada);
 
 		ModelAndView modelView = new ModelAndView("listaDeCarrera");
 		modelView.addObject("listadoCarrera", carreraService.mostrarCarreras());

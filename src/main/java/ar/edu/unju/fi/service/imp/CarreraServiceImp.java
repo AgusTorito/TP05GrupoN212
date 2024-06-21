@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import ar.edu.unju.fi.DTO.CarreraDTO;
+import ar.edu.unju.fi.map.CarreraMapDTO;
 import ar.edu.unju.fi.model.Carrera;
 import ar.edu.unju.fi.repository.CarreraRepository;
 import ar.edu.unju.fi.service.CarreraService;
@@ -13,13 +16,17 @@ public class CarreraServiceImp implements CarreraService {
 
 	
 	@Autowired
+	CarreraMapDTO carreraMapDTO;
+	
+	@Autowired
 	CarreraRepository carreraRepository;
+
 	
 	@Override	
-	public void guardarCarrera(Carrera carrera)
+	public void guardarCarrera(CarreraDTO carreraDTO)
 	{
-		carrera.setEstado(true);
-		carreraRepository.save(carrera);
+		carreraDTO.setEstado(true);
+		carreraRepository.save(carreraMapDTO.convertirCarreraDTOAcarrera(carreraDTO));
 	}
 	
 	@Override
@@ -32,6 +39,7 @@ public class CarreraServiceImp implements CarreraService {
 	public void borrarCarrera(String codigo)
 	{
 		List<Carrera> todasLasCarreras = carreraRepository.findAll();
+		
 		for(int i = 0; i < todasLasCarreras.size(); i++)
 		{
 			Carrera carrera = todasLasCarreras.get(i);
@@ -45,14 +53,15 @@ public class CarreraServiceImp implements CarreraService {
 	}
 
 	@Override
-	public void modificarCarrera(Carrera carrera) {
+	public void modificarCarrera(CarreraDTO carreraDTO) {
 		List<Carrera> lasCarreras = carreraRepository.findAll();
-	
+		
 		for(int i=0; i<lasCarreras.size(); i++)
-		{
+		{	
+			carreraMapDTO.convertirCarreraDTOAcarrera(carreraDTO);
 			Carrera carreras = lasCarreras.get(i);
-			if(carreras.getCodigo().equals(carrera.getCodigo())) {
-				lasCarreras.set(i, carrera);
+			if(carreras.getCodigo().equals(carreraDTO.getCodigo())) {
+				lasCarreras.set(i, carreraDTO);
 				break;
 			}
 		}
@@ -60,11 +69,11 @@ public class CarreraServiceImp implements CarreraService {
 	}
 
 	@Override
-	public Carrera buscarCarrera(String codigo) {
+	public CarreraDTO buscarCarrera(String codigo) {
 
 		List<Carrera> Carreras = carreraRepository.findAll();
 		
-		for (Carrera c : Carreras)
+		for (CarreraDTO c : carreraMapDTO.convertirListaCarreraAListaCarreraDTO(Carreras))
 		{
 			if(c.getCodigo().equals(codigo))
 			{
