@@ -1,43 +1,37 @@
 package ar.edu.unju.fi.service.imp;
 
 import java.util.List;
-
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import ar.edu.unju.fi.DTO.MateriaDTO;
 import ar.edu.unju.fi.model.Materia;
 import ar.edu.unju.fi.repository.MateriaRepository;
 import ar.edu.unju.fi.service.MateriaService;
-import ar.edu.unju.fi.map.MateriaMapDTO;
 
 @Service
 public class MateriaServiceImp implements MateriaService {
 
     @Autowired
-    private MateriaRepository materiaRepository;
-
-    @Autowired
-    private MateriaMapDTO materiaMapDTO;
+    MateriaRepository materiaRepository;
 
     @Override
     public void guardarMateria(MateriaDTO materiaDTO) {
-        Materia materia = materiaMapDTO.convertirMateriaDTOAMateria(materiaDTO);
+        Materia materia = convertirAEntidad(materiaDTO);
         materia.setEstado(true);
         materiaRepository.save(materia);
     }
 
     @Override
-    public List<MateriaDTO> mostrarMaterias() {
-        return materiaMapDTO.convertirListaMateriaAListaMateriaDTO(
-                materiaRepository.findMateriaByEstado(true)
-        );
+    public List<Materia> mostrarMaterias() {
+        return materiaRepository.findMateriaByEstado(true);
     }
 
     @Override
     public void borrarMateria(String codigo) {
-        Materia materia = materiaRepository.findById(codigo).orElse(null);
-        if (materia != null) {
+        Optional<Materia> optionalMateria = materiaRepository.findById(codigo);
+        if (optionalMateria.isPresent()) {
+            Materia materia = optionalMateria.get();
             materia.setEstado(false);
             materiaRepository.save(materia);
         }
@@ -45,8 +39,9 @@ public class MateriaServiceImp implements MateriaService {
 
     @Override
     public void modificarMateria(MateriaDTO materiaDTO) {
-        Materia materia = materiaRepository.findById(materiaDTO.getCodigo()).orElse(null);
-        if (materia != null) {
+        Optional<Materia> optionalMateria = materiaRepository.findById(materiaDTO.getCodigo());
+        if (optionalMateria.isPresent()) {
+            Materia materia = optionalMateria.get();
             materia.setNombre(materiaDTO.getNombre());
             materia.setCurso(materiaDTO.getCurso());
             materia.setCantidadHoras(materiaDTO.getCantidadHoras());
@@ -59,6 +54,15 @@ public class MateriaServiceImp implements MateriaService {
     public Materia buscarMateria(String codigo) {
         return materiaRepository.findById(codigo).orElse(null);
     }
-}
 
+    private Materia convertirAEntidad(MateriaDTO materiaDTO) {
+        Materia materia = new Materia();
+        materia.setCodigo(materiaDTO.getCodigo());
+        materia.setNombre(materiaDTO.getNombre());
+        materia.setCurso(materiaDTO.getCurso());
+        materia.setCantidadHoras(materiaDTO.getCantidadHoras());
+        materia.setModalidad(materiaDTO.getModalidad());
+        return materia;
+    }
+}
 
