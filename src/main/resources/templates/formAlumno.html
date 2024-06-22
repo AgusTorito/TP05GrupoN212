@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formulario Alumno</title>
+</head>
+<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+<link rel="stylesheet" href="/css/styles.css"/>
+<style>
+	* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+</style>
+<body>
+
+<header data-th-insert="~{/layouts/header :: header}"></header>
+<nav data-th-insert="~{/layouts/header :: navbar}"></nav>
+
+
+<div class="container">
+		<h1>Formulario Alumno</h1>
+		<form data-th-object="${nuevoAlumno}" data-th-action="${band}?@{/modificarAlumno}:@{/guardarAlumno}"  method="post">
+			<div class="mb-3">
+				<label for="dni" class="form-label">DNI</label>*<input type="text" class="form-control"
+					id="dni" aria-describedby="codigoHelp" data-th-field="*{dni}" required>
+			</div>
+			<div class="mb-3">
+				<label for="nombre" class="form-label">Nombre del Alumno</label> <input type="text" class="form-control"
+					id="nombre" data-th-field="*{nombre}" >
+			</div>
+			<div class="mb-3">
+				<label for="apellido" class="form-label">Apellido del Alumno</label>
+				<input type="text" class="form-control"
+					id="apellido" data-th-field="*{apellido}" >
+			</div>
+			<div class="mb-3">
+				<label for="email" class="form-label">Email del Alumno</label>
+				<input type="email" class="form-control"
+					id="email" data-th-field="*{email}" >
+			</div>
+			<div class="mb-3">
+				<label for="tel" class="form-label">Telefono del Alumno</label>
+				<input type="text" class="form-control"
+					id="tel" data-th-field="*{celular}" >
+			</div>
+			<div class="mb-3">
+				<label for="fecNac" class="form-label">Fecha de Nacimiento</label>
+				<input type="date" class="form-control"
+					id="fecNac" data-th-field="*{fechaN}" >
+			</div>
+			<div class="mb-3">
+				<label for="direccion" class="form-label">Domicilio</label>
+				<input type="text" class="form-control"
+					id="direccion" data-th-field="*{direccion}" >
+			</div>
+			<div class="mb-3">
+				<label for="legajo" class="form-label">Libreta Universitaria</label>
+				<input type="number" class="form-control"
+					id="legajo" data-th-field="*{legajo}" >
+			</div>
+			<button type="submit" class="btn btn-primary">Agregar</button>
+		</form>
+</div>
+	<br><br>
+
+<footer data-th-insert="~{/layouts/footer :: footer}"></footer>
+
+<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+</body>
+</html>

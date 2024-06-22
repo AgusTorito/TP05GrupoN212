@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>      
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facultad Nacional de Jujuy</title>
+<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">   --> 
+<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+<link rel="stylesheet" href="/css/styles.css"/>
+</head>
+<body>
+
+<div>
+	
+ <div class="header-container">
+        <header>
+            <nav class="navbar bg-dark border-bottom border-body header-navbar" data-bs-theme="dark">
+                <div class="container-fluid">
+                    <a href="#" class="navbar-brand">
+                        <img alt="imagen de la facultad" src="/imagenes/logo.png" class="img-fluid custom-img-size link-image">
+                    </a>
+                    <div class="navbar-title-container">
+                        <h1 style="color: white;" class="nombre">FACULTAD NACIONAL DE JUJUY</h1>
+                        <h4 style="color: white;" class="eslogan">"La educación es lo que sobrevive cuando lo aprendido ha sido olvidado"</h4>
+                    </div>
+                    <form class="d-flex" role="search" action="">
+                        <input class="form-control me-2" type="search" placeholder="¿Qué busca?" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    </form>
+                </div>
+            </nav>
+        </header>
+</div>
+
+<div class="navbar-container">
+			<nav class="navbar bg-body-tertiary navbar-custom">
+				<div class="container-fluid">
+					<div class="imagenes-container">
+						<a class="navbar-brand" href="https://www.instagram.com">
+							<img alt="imagenDeInstagram" src="/imagenes/insta.png" class="img-fluid custom-img-size-insta link-image">
+						</a>
+						<a class="navbar-brand" href="https://www.facebook.com">
+							<img alt="imagenDeFacebook" src="/imagenes/facebook.png" class="img-fluid custom-img-size-face link-image">
+						</a>
+						<a class="navbar-brand" href="https://www.youtube.com">
+							<img alt="imagenDeYoutube" src="/imagenes/youtube.png" class="img-fluid custom-img-size-youtu link-image">
+						</a>
+					</div>
+					<button class="navbar-toggler" type="button"
+						data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+						aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="offcanvas offcanvas-end" tabindex="-1"
+						id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+						<div class="offcanvas-header">
+							<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu de Navegacion</h5>
+							<button type="button" class="btn-close"
+								data-bs-dismiss="offcanvas" aria-label="Close"></button>
+						</div>
+						<div class="offcanvas-body">
+							<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+								<li class="nav-item"><a class="nav-link active" aria-current="page" href="/principal/index">Inicio</a></li>
+								<li class="nav-item"><a class="nav-link active" href="/AgregarDatos">Agregar o Añadir informacion</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+</div>
+
+<div>
+	<main>
+        <section id="history" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="/imagenes/logo.png" alt="Facultad Nacional de Jujuy" class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <h2>Nuestra historia</h2>
+                        <p>La Facultad Nacional de Jujuy fue fundada en el año 1973 como una institución de educación superior dedicada a la enseñanza e investigación en ingeniería y tecnología.</p>
+                        <p>Desde su fundación, la facultad ha desempeñado un papel importante en el desarrollo de la región de Jujuy, ofreciendo programas educativos de alta calidad y realizando investigaciones relevantes para la región y el país.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="courses" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="/imagenes/quimica.png" alt="Ingeniería Química" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">Ingeniería Química</h5>
+                                <p class="card-text">Programa educativo de cuatro años en el área de Química que abarca las áreas de ciencia y tecnología, biotecnología y nanotecnología.</p>
+                                <a href="#" class="btn btn-primary">Más información</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="/imagenes/minas.png" alt="Ingeniería de Minas" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">Ingeniería de Minas</h5>
+                                <p class="card-text">Programa educativo de cuatro años en el área de Minas y Metalurgia que abarca las áreas de ingeniería de minas, metalurgia, explotación y gestión de minas.<p></p>
+                                <a href="#" class="btn btn-primary">Más información</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="/imagenes/industrial.png" alt="Ingeniería Industrial" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">Ingeniería Industrial</h5>
+                                <p class="card-text">Programa educativo de cuatro años en el área de Ingeniería Industrial que abarca las áreas de ingeniería mecánica, electromecánica, de producción, gestión de empresas y administración de empresas.</p>
+                                <a href="#" class="btn btn-primary">Más información</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="/imagenes/informatica.png" alt="Ingeniería Informatica" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">Ingeniería Informatica</h5>
+                                <p class="card-text">La Ingeniería Informática es una disciplina que se centra en el diseño, desarrollo, implementación y gestión de sistemas de información y tecnologías computacionales. Los ingenieros informáticos son profesionales capacitados para trabajar en diversos campos relacionados con la informática, desde el desarrollo de software hasta la administración de redes y sistemas.</p>
+                                <a href="#" class="btn btn-primary">Más información</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>	
+        
+        <section>
+					<div id="carouselExample" class="carousel slide">
+						<div class="carousel-inner">
+							<div class="carousel-item active imagen1">
+								<img src="/imagenes/facu2.jpg" class="d-block w-100" alt="facultad nacional">
+							</div>
+							<div class="carousel-item imagen2">
+								<img src="/imagenes/facultad.jpeg" class="d-block w-100" alt="...">
+							</div>
+							<div class="carousel-item imagen3">
+								<img src="/imagenes/facu.jpeg" class="d-block w-100" alt="...">
+							</div>
+						</div>
+						<button class="carousel-control-prev" type="button"
+							data-bs-target="#carouselExample" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button"
+							data-bs-target="#carouselExample" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+		</section>	
+	</main>
+
+</div>
+
+	<footer>
+	<div>
+		<div>
+		<h3 style="color: white;">Informacion de contacto con la Facultad</h3>
+			<ul>
+				<li style="color: white;">Av. Bolivia 123, San Salvador de Jujuy, Jujuy</li>
+				<li style="color: white;">3884225800</li>
+				<li ><a href="https://www.gmail.com">facultadNacionalJujuy@gmail.com</a></li>
+			</ul>
+		</div>
+		<div>
+		<h3 style="color: white;">Redes Sociales</h3>
+		<ul>
+			<li><a href="https://www.instagram.com">Instagram</a></li>
+			<li><a href="https://www.facebook.com">Facebook</a></li>
+			<li><a href="https://www.twitter.com">Twitter</a></li>
+		</ul>
+		</div>
+		<div>
+			<h5 style="color: white;">Copyright © 2010-2023 - Facultad Nacional De Jujuy</h5>
+		</div>
+	</div>
+	</footer>
+</div>
+		
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+</body>
+</html>

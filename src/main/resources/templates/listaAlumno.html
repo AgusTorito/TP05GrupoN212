@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facultad Nacional de Jujuy</title>
+<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+<link rel="stylesheet" href="/css/styles.css"/>
+</head>
+
+<style>
+	* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+</style>
+
+<body>
+
+<header data-th-insert="~{/layouts/header :: header}"></header>
+<nav data-th-insert="~{/layouts/header :: navbar}"></nav>
+
+					<div class="container">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th scope="col">DNI</th>
+									<th scope="col">Nombre</th>
+									<th scope="col">Apellido</th>
+									<th scope="col">Email</th>
+									<th scope="col">Telefono</th>
+									<th scope="col">Fecha de Nacimiento</th>
+									<th scope="col">Domicilio</th>
+									<th scope="col">Libreta</th>								
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-th-each="alumno : ${listadoAlumno}">
+									<td data-th-text="${alumno.dni}"></td>
+									<td data-th-text="${alumno.nombre}"></td>
+									<td data-th-text="${alumno.apellido}"></td>
+									<td data-th-text="${alumno.email}"></td>
+									<td data-th-text="${alumno.telefono}"></td>
+									<td data-th-text="${alumno.fechaNacimiento}"></td>
+									<td data-th-text="${alumno.domicilio}"></td>
+									<td data-th-text="${alumno.LU}"></td>
+									<td><a data-th-href="@{'/quitarAlumno/'+${alumno.dni}}" class="btn btn-danger">Quitar</a> <a data-th-href="@{'/modificarAlumno/'+${alumno.dni}}" class="btn btn-warning">Modificar</a></td>
+								</tr>
+							</tbody>
+						</table>
+						<a href="/formularioAlumno" class="btn btn-success">Agregar Nuevo Alumno</a>
+					</div>
+
+
+
+<footer data-th-insert="~{/layouts/footer :: footer}"></footer>
+
+<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+</body>
+</html>
