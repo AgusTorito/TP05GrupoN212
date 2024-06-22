@@ -7,24 +7,23 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import ar.edu.unju.fi.DTO.MateriaDTO;
 import ar.edu.unju.fi.service.MateriaService;
-import ar.edu.unju.fi.map.MateriaMapDTO;
+import ar.edu.unju.fi.model.Materia;
 
 @Controller
 public class MateriaController {
     
     @Autowired
-    private MateriaService materiaService;
-
-    @Autowired
-    private MateriaMapDTO materiaMapDTO;
+    MateriaService materiaService;
     
+    @Autowired
+    MateriaDTO nuevaMateriaDTO;
+
     @GetMapping("/formularioMateria")
     public ModelAndView getFormMateria() {
         ModelAndView modelView = new ModelAndView("formMateria");
-        modelView.addObject("nuevaMateria", new MateriaDTO());
+        modelView.addObject("nuevaMateria", nuevaMateriaDTO);
         return modelView;
     }
     
@@ -53,7 +52,7 @@ public class MateriaController {
 
     @GetMapping("/modificarMateria/{codigo}")
     public ModelAndView getModificarMateria(@PathVariable(name="codigo") String codigo) {
-        MateriaDTO materiaParaModificar = materiaMapDTO.convertirMateriaAMateriaDTO(materiaService.buscarMateria(codigo));
+        Materia materiaParaModificar = materiaService.buscarMateria(codigo);
         ModelAndView modelView = new ModelAndView("formMateria");
         modelView.addObject("nuevaMateria", materiaParaModificar);
         return modelView;
