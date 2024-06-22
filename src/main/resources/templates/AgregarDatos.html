@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facultad Nacional de Jujuy</title>
+<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+<link rel="stylesheet" href="/css/styles.css"/>
+</head>
+<body>
+<header data-th-insert="~{/layouts/header :: header}"></header>
+<nav data-th-insert="~{/layouts/header :: navbar}"></nav>
+
+	<main class="col-md-12">
+		<div class="p-3">
+			<h1>Agregar un Alumno</h1>
+			<a data-th-href="@{/formularioAlumno}" class="btn btn-success">Añadir</a>
+		</div>
+
+		<div class="p-3">
+			<h1>Agregar una Carrera</h1>
+			<a data-th-href="@{/formularioCarrera}" class="btn btn-success mb-3">Añadir</a>
+		</div>
+
+		<div class="p-3">
+			<h1>Agregar un Docente</h1>
+			<a data-th-href="@{/formularioDocente}" class="btn btn-success">Añadir</a>
+		</div>
+
+		<div class="p-3">
+			<h1>Agregar una Materia</h1>
+			<a data-th-href="@{/formularioMateria}" class="btn btn-success mb-3">Añadir</a>
+		</div>
+	</main>
+
+<footer data-th-insert="/layouts/footer :: footer"></footer>
+
+<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+</body>
+</html>

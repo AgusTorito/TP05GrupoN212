@@ -7,6 +7,7 @@
 <link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 <link rel="stylesheet" href="/css/styles.css"/>
 </head>
+
 <style>
 	* {
     margin: 0;
@@ -28,6 +29,7 @@ body {
     flex: 1;
 }
 </style>
+
 <body>
 
 <header data-th-insert="~{/layouts/header :: header}"></header>
@@ -37,23 +39,31 @@ body {
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<th scope="col">Codigo</th>
+									<th scope="col">DNI</th>
 									<th scope="col">Nombre</th>
-									<th scope="col">Cantidad de Años</th>
-									<th scope="col">Estado</th>
+									<th scope="col">Apellido</th>
+									<th scope="col">Email</th>
+									<th scope="col">Telefono</th>
+									<th scope="col">Fecha de Nacimiento</th>
+									<th scope="col">Domicilio</th>
+									<th scope="col">Libreta</th>								
 								</tr>
 							</thead>
 							<tbody>
-								<tr data-th-each="carrera : ${listadoCarrera}">
-									<td data-th-text="${carrera.codigo}"></td>
-									<td data-th-text="${carrera.nombre}"></td>
-									<td data-th-text="${carrera.cantAnios}"></td>
-									<td data-th-text="${carrera.estado}"></td>
-									<td><a data-th-href="@{'/quitarCarrera/'+${carrera.codigo}}" class="btn btn-danger">Quitar</a> <a data-th-href="@{'/modificarCarrera/'+${carrera.codigo}}" class="btn btn-warning">Modificar</a></td>
+								<tr data-th-each="alumno : ${listadoAlumno}">
+									<td data-th-text="${alumno.dni}"></td>
+									<td data-th-text="${alumno.nombre}"></td>
+									<td data-th-text="${alumno.apellido}"></td>
+									<td data-th-text="${alumno.email}"></td>
+									<td data-th-text="${alumno.telefono}"></td>
+									<td data-th-text="${alumno.fechaNacimiento}"></td>
+									<td data-th-text="${alumno.domicilio}"></td>
+									<td data-th-text="${alumno.LU}"></td>
+									<td><a data-th-href="@{'/quitarAlumno/'+${alumno.dni}}" class="btn btn-danger">Quitar</a> <a data-th-href="@{'/modificarAlumno/'+${alumno.dni}}" class="btn btn-warning">Modificar</a></td>
 								</tr>
 							</tbody>
 						</table>
-						<a href="/formularioCarrera" class="btn btn-success">Agregar Nueva Carrera</a>
+						<a href="/formularioAlumno" class="btn btn-success">Agregar Nuevo Alumno</a>
 					</div>
 
 

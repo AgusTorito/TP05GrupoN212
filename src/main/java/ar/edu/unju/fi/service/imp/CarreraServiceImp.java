@@ -54,14 +54,16 @@ public class CarreraServiceImp implements CarreraService {
 
 	@Override
 	public void modificarCarrera(CarreraDTO carreraDTO) {
+		
+		Carrera carreraModificada = carreraMapDTO.convertirCarreraDTOAcarrera(carreraDTO);
+		
 		List<Carrera> lasCarreras = carreraRepository.findAll();
 		
 		for(int i=0; i<lasCarreras.size(); i++)
 		{	
-			carreraMapDTO.convertirCarreraDTOAcarrera(carreraDTO);
 			Carrera carreras = lasCarreras.get(i);
-			if(carreras.getCodigo().equals(carreraDTO.getCodigo())) {
-				lasCarreras.set(i, carreraDTO);
+			if(carreras.getCodigo().equals(carreraModificada.getCodigo())) {
+				lasCarreras.set(i, carreraModificada);
 				break;
 			}
 		}
