@@ -10,21 +10,21 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.DTO.MateriaDTO;
 import ar.edu.unju.fi.service.MateriaService;
-import ar.edu.unju.fi.model.Materia;
+import ar.edu.unju.fi.map.MateriaMapDTO;
 
 @Controller
 public class MateriaController {
     
     @Autowired
-    MateriaService materiaService;
-    
-    @Autowired
-    MateriaDTO nuevaMateriaDTO;
+    private MateriaService materiaService;
 
+    @Autowired
+    private MateriaMapDTO materiaMapDTO;
+    
     @GetMapping("/formularioMateria")
     public ModelAndView getFormMateria() {
         ModelAndView modelView = new ModelAndView("formMateria");
-        modelView.addObject("nuevaMateria", nuevaMateriaDTO);
+        modelView.addObject("nuevaMateria", new MateriaDTO());
         return modelView;
     }
     
@@ -53,7 +53,7 @@ public class MateriaController {
 
     @GetMapping("/modificarMateria/{codigo}")
     public ModelAndView getModificarMateria(@PathVariable(name="codigo") String codigo) {
-        Materia materiaParaModificar = materiaService.buscarMateria(codigo);
+        MateriaDTO materiaParaModificar = materiaMapDTO.convertirMateriaAMateriaDTO(materiaService.buscarMateria(codigo));
         ModelAndView modelView = new ModelAndView("formMateria");
         modelView.addObject("nuevaMateria", materiaParaModificar);
         return modelView;
