@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es" >
+<head>
+<meta charset="UTF-8">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<title>Lista De Docentes</title>
+<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+</head>
+
+<body>
+	
+
+	<div class="container">
+		<h1>Listado De Docentes</h1>
+		<table class="table">
+			<thead class="table-light">
+				<tr>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellido</th>
+					<th scope="col">Legajo</th>
+					<th scope="col">Email</th>
+					<th scope="col">Telefono</th>
+					<th scope="col">Acciones</th>
+				</tr>
+			</thead>
+
+			<tbody class="table-group-divider">
+				<tr data-th-each="docente : ${listadoDeDocentes}">
+					<td data-th-text="${docente.nombre}"></td>
+					<td data-th-text="${docente.apellido}"></td>
+					<td data-th-text="${docente.legajo}"></td>
+					<td data-th-text="${docente.email}"></td>
+					<td data-th-text="${docente.telefono}"></td>
+					<td>
+						<a data-th-href="@{'/borrarDocente/'+${docente.legajo}}" class="btn btn-danger">Borrar</a> 
+						<a data-th-href="@{'/modificarDocente/'+${docente.legajo}}" class="btn btn-warning">Modificar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	
+	<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+	
+</body>
+</html>
