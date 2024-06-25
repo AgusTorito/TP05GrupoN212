@@ -14,22 +14,26 @@
 	<main class="col-md-12">
 		<div class="p-3">
 			<h1>Agregar un Alumno</h1>
-			<a data-th-href="@{/formularioAlumno}" class="btn btn-success">Añadir</a>
+			<a th:href="@{/formularioAlumno}" class="btn btn-success">Añadir</a>
+			<a th:href="@{/ListadoAlumno}" class="btn btn-info">Lista de Alumnos</a>
 		</div>
 
 		<div class="p-3">
 			<h1>Agregar una Carrera</h1>
 			<a data-th-href="@{/formularioCarrera}" class="btn btn-success mb-3">Añadir</a>
+			<a data-th-href="@{/ListaCarreras}" class="btn btn-info">Lista de Carreras</a>
 		</div>
 
 		<div class="p-3">
 			<h1>Agregar un Docente</h1>
 			<a data-th-href="@{/formularioDocente}" class="btn btn-success">Añadir</a>
+			<a data-th-href="@{/ListadoDocente}" class="btn btn-info">Lista de Docentes</a>
 		</div>
 
 		<div class="p-3">
 			<h1>Agregar una Materia</h1>
 			<a data-th-href="@{/formularioMateria}" class="btn btn-success mb-3">Añadir</a>
+			<a data-th-href="@{/ListaMaterias}" class="btn btn-info">Lista de Materias</a>
 		</div>
 	</main>
 
