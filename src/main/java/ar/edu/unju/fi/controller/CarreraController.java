@@ -30,6 +30,7 @@ public class CarreraController {
 	@GetMapping("/ListaCarreras")
     public ModelAndView getlistaCarrera() {
         ModelAndView modelView = new ModelAndView("listaDeCarrera");
+        modelView.addObject("listadoCarrera", carreraService.mostrarCarreras());
         return modelView;
     }
 
