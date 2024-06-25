@@ -29,6 +29,7 @@ public class AlumnoController {
 	@GetMapping("/ListadoAlumno")
    public ModelAndView getlistaAlumno() {
        ModelAndView modelView = new ModelAndView("listaAlumno");
+       modelView.addObject("listadoAlumno", alumnoService.mostrarAlumnos());
        return modelView;
    }
 
