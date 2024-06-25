@@ -25,6 +25,13 @@ public class DocenteController {
 		MV.addObject("nuevoDocente", nuevoDocenteDTO);
 		return MV;
 	}
+	
+	@GetMapping("/ListadoDocente")
+	   public ModelAndView getlistaDocente() {
+	       ModelAndView modelView = new ModelAndView("listaDocente");
+	       modelView.addObject("listadoDeDocentes", docenteService.mostrarDocentes());
+	       return modelView;
+	}
 
 	@PostMapping("/guardarDocente")
 	public ModelAndView saveDocente(@ModelAttribute("nuevoDocente") DocenteDTO docenteParaGuardar) {
