@@ -55,17 +55,7 @@ public class AlumnoServiceImp implements AlumnoService {
 
 	@Override
 	public void modificarAlumno(AlumnoDTO alumnoDTO) {
-		List<Alumno> losAlumnos = alumnoRepository.findAll();
-		
-		for(int i=0; i<losAlumnos.size(); i++)
-		{	
-			alumnoMapDTO.convertirAlumnoDTOAAlumno(alumnoDTO);
-			Alumno alumnos = losAlumnos.get(i);
-			if(alumnos.getDni().equals(alumnoDTO.getDni())) {
-				losAlumnos.set(i, alumnoDTO);
-				break;
-			}
-		}
+		alumnoRepository.save(alumnoMapDTO.convertirAlumnoDTOAAlumno(alumnoDTO));
 	}
 
 	@Override

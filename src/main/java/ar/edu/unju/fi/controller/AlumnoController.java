@@ -11,6 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.DTO.AlumnoDTO;
 import ar.edu.unju.fi.service.AlumnoService;
+import ar.edu.unju.fi.service.CarreraService;
+import ar.edu.unju.fi.service.MateriaService;
+import jakarta.validation.Valid;
 
 @Controller
 public class AlumnoController {
@@ -35,9 +38,12 @@ public class AlumnoController {
     }
 
 	@PostMapping("/guardarAlumno")
-	public ModelAndView saveAlumno(@ModelAttribute("nuevaAlumno") AlumnoDTO alumnoParaGuardar) {
-		
+	public ModelAndView saveAlumno(@Valid @ModelAttribute("nuevaAlumno") AlumnoDTO alumnoParaGuardar) {
+	try {
 	alumnoService.guardarAlumno(alumnoParaGuardar);
+	}catch(Exception e){
+		
+	}
 	
 	ModelAndView modelView = new ModelAndView("listaDeAlumno");
 	modelView.addObject("listadoAlumno", alumnoService.mostrarAlumnos());
