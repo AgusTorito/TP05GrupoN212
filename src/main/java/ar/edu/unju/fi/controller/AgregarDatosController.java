@@ -12,4 +12,5 @@ public class AgregarDatosController {
 	public String agregarDatos() {
 		return "AgregarDatos";
 	}
+
 }

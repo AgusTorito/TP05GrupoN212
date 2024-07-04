@@ -4,84 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
-	<link rel="stylesheet" href="/css/styles.css"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
     <title>Formulario Docente</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            flex: 1;
+        }
+    </style>
 </head>
-<style>
-	* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.container {
-    flex: 1;
-}
-</style>
 <body>
 
 <header data-th-insert="~{/layouts/header :: header}"></header>
 <nav data-th-insert="~{/layouts/header :: navbar}"></nav>
 
-    <div class="container">
-        <h1>Formulario De Docente</h1>
-        <form th:object="${nuevoDocente}"
-              th:action="${band} ? @{/modificarDocente} : @{/guardarDocente}"
-              method="post">
+<div class="container">
+    <h1>Formulario de Docente</h1>
+    <form th:object="${nuevoDocente}"
+          th:action="${band} ? @{/modificarDocente} : @{/guardarDocente}"
+          method="post">
 
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="nombre"
-                       th:field="*{nombre}"
-                       placeholder="Ingrese El Nombre Del Docente" required> 
-                <label for="nombre">Nombre del Docente</label>
-            </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nombre"
+                   th:field="*{nombre}"
+                   placeholder="Ingrese el Nombre del Docente" required>
+            <label for="nombre">Nombre del Docente</label>
+        </div>
 
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="apellido"
-                       th:field="*{apellido}"
-                       placeholder="Ingrese El Apellido Del Docente" required> 
-                <label for="apellido">Apellido del Docente</label>
-            </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="apellido"
+                   th:field="*{apellido}"
+                   placeholder="Ingrese el Apellido del Docente" required>
+            <label for="apellido">Apellido del Docente</label>
+        </div>
 
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control"
-                       placeholder="Ingrese El Legajo Del Docente"
-                       th:field="*{legajo}" id="legajo" required
-                       th:readonly="${band}"> 
-                <label for="legajo">Legajo del Docente</label>
-            </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control"
+                   placeholder="Ingrese el Legajo del Docente"
+                   th:field="*{legajo}" id="legajo" required
+                   th:readonly="${band}">
+            <label for="legajo">Legajo del Docente</label>
+        </div>
 
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="email"
-                       th:field="*{email}"
-                       placeholder="Ingrese El Email Del Docente"> 
-                <label for="email">Email del Docente</label>
-            </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="email"
+                   th:field="*{email}"
+                   placeholder="Ingrese el Email del Docente" required>
+            <label for="email">Email del Docente</label>
+        </div>
 
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control"
-                       placeholder="Ingrese el Teléfono Del Docente"
-                       th:field="*{telefono}" id="telefono" required> 
-                <label for="telefono">Teléfono Del Docente</label>
-            </div>
+        <div class="form-floating mb-3">
+            <input type="tel" class="form-control"
+                   placeholder="Ingrese el Teléfono del Docente"
+                   th:field="*{telefono}" id="telefono" required>
+            <label for="telefono">Teléfono del Docente</label>
+        </div>
 
-            <button type="submit" class="btn btn-primary">Guardar Docente</button>
-            <br><br><br>
-        </form>
-    </div>
-    
-   <footer data-th-insert="~{/layouts/footer :: footer}"></footer>
+        <button type="submit" class="btn btn-primary">Guardar Docente</button>
+        <br><br><br>
+    </form>
+</div>
 
-    <script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+<footer data-th-insert="~{/layouts/footer :: footer}"></footer>
+
+<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
 </body>
 </html>
+

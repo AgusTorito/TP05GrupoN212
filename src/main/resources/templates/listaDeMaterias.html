@@ -4,69 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lista de Materias</title>
-    <link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
-	<link rel="stylesheet" href="/css/styles.css"/>
-<style>
-	* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/css/styles.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-html, body {
-    height: 100%;
-}
+        html, body {
+            height: 100%;
+        }
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-.container {
-    flex: 1;
-}
-</style>
+        .container {
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
-<header data-th-insert="~{/layouts/header :: header}"></header>
-<nav data-th-insert="~{/layouts/header :: navbar}"></nav>
+<header th:insert="~{/layouts/header :: header}"></header>
+<nav th:insert="~{/layouts/header :: navbar}"></nav>
 
-    <div class="container">
-        <h1 class="mb-4">Lista de Materias</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Código</th>
-                    <th>Nombre</th>
-                    <th>Curso</th>
-                    <th>Cantidad de Horas</th>
-                    <th>Modalidad</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="materia : ${listadoMateria}">
-                    <td th:text="${materia.codigo}">Código</td>
-                    <td th:text="${materia.nombre}">Nombre</td>
-                    <td th:text="${materia.curso}">Curso</td>
-                    <td th:text="${materia.cantidadHoras}">Cantidad de Horas</td>
-                    <td th:text="${materia.modalidad}">Modalidad</td>
-                    <td>
-                        <a th:href="@{/modificarMateria/{codigo}(codigo=${materia.codigo})}" class="btn btn-primary">Modificar</a>
-                        <a th:href="@{/quitarMateria/{codigo}(codigo=${materia.codigo})}" class="btn btn-danger">Eliminar</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <a href="/formularioMateria" class="btn btn-success">Agregar Nueva Materia</a>
-    	<a href="/AgregarDatos" class="btn btn-primary">Agregar otro tipo de Informacion</a>
-    </div>
+<div class="container">
+    <h1 class="mb-4">Lista de Materias</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Curso</th>
+                <th>Cantidad de Horas</th>
+                <th>Modalidad</th>
+                <th>Carrera</th>
+                <th>Docente</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="materia : ${listadoMateria}">
+                <td th:text="${materia.codigo}">Código</td>
+                <td th:text="${materia.nombre}">Nombre</td>
+                <td th:text="${materia.curso}">Curso</td>
+                <td th:text="${materia.cantidadHoras}">Cantidad de Horas</td>
+                <td th:text="${materia.modalidad}">Modalidad</td>
+                <td th:text="${materia.carrera.nombre}">Carrera</td>
+                <td th:text="${materia.docente.nombre}">Docente</td>
+                <td>
+                    <a th:href="@{/modificarMateria/{codigo}(codigo=${materia.codigo})}" class="btn btn-primary">Modificar</a>
+                    <a th:href="@{/quitarMateria/{codigo}(codigo=${materia.codigo})}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<a th:href="@{/formularioMateria}" class="btn btn-success">Agregar Nueva Materia</a>
+<a th:href="@{/AgregarDatos}" class="btn btn-primary">Agregar otro tipo de Información</a>
+<a th:href="@{/alumnosPorMateria}" class="btn btn-danger">Listado Alumno en Materia</a>
+<a data-th-href="@{/inscripcionAlumnoMateria}" class="btn btn-danger">Añadir Alumno a Materia</a>
+
+</div>
 <br><br>
-    
-<footer data-th-insert="~{/layouts/footer :: footer}"></footer>
 
-<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+<footer th:insert="~{/layouts/footer :: footer}"></footer>
+
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
 </body>
 </html>
 

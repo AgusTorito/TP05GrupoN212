@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inscripción Alumno en Materia</title>
+    <link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/css/styles.css"/>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+<header data-th-insert="~{/layouts/header :: header}"></header>
+<nav data-th-insert="~{/layouts/header :: navbar}"></nav>
+<div class="container">
+    <h1 class="mb-4">Inscripción de Alumno en Materia</h1>
+    <form th:action="@{/inscribirAlumnoMateria}" method="post">
+        <div class="form-group">
+            <label for="alumno">Alumno</label>
+            <select class="form-select" id="alumno" name="alumno" required>
+                <option value="" disabled selected>Seleccione un alumno</option>
+                <option th:each="alumno : ${alumnos}" th:value="${alumno.dni}" th:text="${alumno.nombre}"></option>
+            </select>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="materia">Materia</label>
+            <select class="form-select" id="materia" name="materia" required>
+                <option value="" disabled selected>Seleccione una materia</option>
+                <option th:each="materia : ${materias}" th:value="${materia.codigo}" th:text="${materia.nombre}"></option>
+            </select>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Inscribir</button>
+        <a data-th-href="@{/listaMaterias}" class="btn btn-info">Volver</a>
+    </form>
+    <br>
+    <br>
+</div>
+<footer data-th-insert="~{/layouts/footer :: footer}"></footer>
+<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+</body>
+</html>
+
