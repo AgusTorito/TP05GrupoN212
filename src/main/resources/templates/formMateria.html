@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario Materia</title>
+    <link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+	<link rel="stylesheet" href="/css/styles.css"/>
+    <style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.container {
+	flex: 1;
+}
+</style>
+</head>
+<body>
+
+<header data-th-insert="~{/layouts/header :: header}"></header>
+<nav data-th-insert="~{/layouts/header :: navbar}"></nav>
+
+    <div class="container">
+        <h1 class="mb-4">Formulario Materia</h1>
+        <form th:object="${nuevaMateria}" th:action="@{/guardarMateria}" method="post" action="">
+            <div class="form-group">
+                <label for="codigo">Código <span class="required"></span></label>
+                <input type="text" class="form-control" id="codigo" th:field="*{codigo}" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="nombre">Nombre <span class="required"></span></label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="curso">Curso <span class="required"></span></label>
+                <input type="text" class="form-control" id="curso" th:field="*{curso}" placeholder="Curso" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="cantidadHoras">Cantidad de Horas <span class="required"></span></label>
+                <input type="number" class="form-control" id="cantidadHoras" th:field="*{cantidadHoras}" placeholder="Cantidad de Horas" required>
+            </div>
+            <br>
+			<div class="input-group mb-3">
+				<label class="input-group-text" for="modalidad">Modalidad</label>
+				<select class="form-select" id="modalidad" th:field="*{modalidad}" required>
+					<option value="Presencial">Presencial</option>
+					<option value="Virtual">Virtual</option>
+				</select>
+			</div>
+			<br>
+			<div class="form-floating mb-3">
+				<select class="form-select" id="docente" name="docente.legajo"
+					required>
+					<option value="">Seleccione el Docente de la Materia</option>
+					<option th:each="docente : ${listadoDeDocentes}"
+						th:value="${docente.legajo}" th:text="${docente.apellido}"></option>
+				</select> <label for="docente">Docente de la Materia</label>
+			</div>
+			<div th:if="${errors}">
+				<p class="form-text text-danger"  th:text="${cargarMateriaErrorMensaje}"></p>
+			</div>
+
+			<br>
+
+			<button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+        <br><br><br>
+   </div>
+    
+<footer data-th-insert="~{/layouts/footer :: footer}"></footer>
+
+<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+</body>
+</html>
+
+
+
